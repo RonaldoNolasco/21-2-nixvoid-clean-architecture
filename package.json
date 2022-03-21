@@ -10,5 +10,8 @@
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
   },
-  "name": "clean-architecture-rnolascoc"
+  "name": "clean-architecture-rnolascoc",
+  "devDependencies": {
+    "playwright-chromium": "^1.20.0"
+  }
 }

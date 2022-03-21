@@ -3,7 +3,7 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
+background: https://res.cloudinary.com/practicaldev/image/fetch/s--UULjRjwS--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://thepracticaldev.s3.amazonaws.com/i/ss88armov887l9u5dgxj.jpg
 # apply any windi css classes to the current slide
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
@@ -27,25 +27,26 @@ Programación Funcional
 
 Principio de Responsabilidad Única
 
-<!--<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+<style>
+h1 {
+  -webkit-text-fill-color: #FFFFFF;
+  -moz-text-fill-color: #FFFFFF;
+}
+</style>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>-->
+---
+layout: center
+class: text-center
+---
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+# Capítulo 6: Programación Funcional
+
+<style>
+h1 {
+  -webkit-text-fill-color: #FFFFFF;
+  -moz-text-fill-color: #FFFFFF;
+}
+</style>
 
 ---
 
@@ -85,63 +86,58 @@ Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funciona
 <br>
 <br>
 <br>
-Desde el punto de vista de arquitecto es importante, éste quiere diseñar sistemas robustos que soporten múltiples hilos y procesos.
 
-La pregunta sería: ¿Se puede mantener siempre la inmutabilidad?
+<v-click>
+<p>Desde el punto de vista de arquitecto es importante, éste quiere diseñar sistemas robustos que soporten múltiples hilos y procesos.</p>
 
-- Si, con infinito almacenamiento y velocidad de procesamiento.
+<p>¿Se puede mantener siempre la inmutabilidad?</p>
+
+<ul><li>Si, pero solo con <b>infinito almacenamiento y velocidad de procesamiento.</b></li></ul>
+</v-click>
 
 ---
 
 # Segregación de mutabilidad
 
-Caso: Imprimir los cuadrados de los primeros 25 números enteros
-
 <div class="grid grid-cols-2 gap-4">
-  <div>
-  <h4>En Java (orientado a objetos):</h4>
-  <br>
-  <img src="assets/Screenshot_2409.png"/>
-  <p>Usa una variable <b>mutable</b>: Una variable que cambia su estado en la ejecución del programa</p>
-  </div>
+<div>
 
-  <div>
-  <h4>En Clojure (funcional):</h4>
-  <br>
-  <img src="assets/Screenshot_2410.png"/>
-  <br>
-  <img src="assets/Screenshot_2411.png"/>
-  <p><b>No usa</b> variables mutables: La variable x es inicializada, pero nunca modificada</p>
-  </div>
+Se refiere a separar los servicios dentro de la aplicación en componentes mutables e inmutables.
+
+Los componentes inmutables realizan sus tareas de forma funcional, sin utilizar mutaciones. Estos se comunican con uno o más componentes que son mutables, y que permiten que el estado de las variables cambie.
+
+Es práctica común utilizar una memoria transaccional para proteger las variables mutables de las actualizaciones concurrentes y las condiciones de secuencia.
+
 </div>
+<div>
 
-Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funcionales no varían.
+<br><br>
+<img src="assets/Screenshot_2417.png"/>
+
+</div>
+</div>
 
 ---
 
 # Suministro de eventos
 
-Caso: Imprimir los cuadrados de los primeros 25 números enteros
-
 <div class="grid grid-cols-2 gap-4">
-  <div>
-  <h4>En Java (orientado a objetos):</h4>
-  <br>
-  <img src="assets/Screenshot_2409.png"/>
-  <p>Usa una variable <b>mutable</b>: Una variable que cambia su estado en la ejecución del programa</p>
-  </div>
+<div>
 
-  <div>
-  <h4>En Clojure (funcional):</h4>
-  <br>
-  <img src="assets/Screenshot_2410.png"/>
-  <br>
-  <img src="assets/Screenshot_2411.png"/>
-  <p><b>No usa</b> variables mutables: La variable x es inicializada, pero nunca modificada</p>
-  </div>
+El aprovisionamiento de eventos es una estrategia en la que almacenamos las transacciones, pero no el estado.
+
+Ejemplo: Una aplicación bancaria que, en lugar de almacenar en lugar de almacenar los saldos de las cuentas, y realizar mutaciones en base a depósitos y retiros, almacenamos sólo las transacciones.
+
+Como mejora se puede calcular y guardar el estado cada medianoche, para evitar gran procesamiento y almacenamiento. Para calcular el estado actual, solo se aplican las transacciones desde la medianoche.
+
 </div>
+<div>
 
-Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funcionales no varían.
+<br><br>
+<img src="assets/supercomputadora.jpg"/>
+
+</div>
+</div>
 
 ---
 
@@ -152,390 +148,18 @@ Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funciona
   <li>La programación orientada a objetos es la disciplina que se opone a la transferencia indirecta de control.</li>
   <li>La programación funcional es la disciplina que se opone a la asignación de variables.</li>
 </ul>
-<br>
-<br>
-<p>Cada uno restringe algún aspecto de la forma en que escribimos el código. Ninguno de ellos ha aumentado nuestro poder o nuestras capacidades.</p>
-<br>
-<p>Las reglas del software son las mismas hoy que en 1946, cuando Alan Turing escribió el primer código que se ejecutó en un ordenador electrónico. Las herramientas han cambiado y el hardware también, pero la esencia del software sigue siendo la misma.</p>
-
----
-
-# Principios de diseño
-
-Caso: Imprimir los cuadrados de los primeros 25 números enteros
-
-<div class="grid grid-cols-2 gap-4">
-  <div>
-  <h4>En Java (orientado a objetos):</h4>
-  <br>
-  <img src="assets/Screenshot_2409.png"/>
-  <p>Usa una variable <b>mutable</b>: Una variable que cambia su estado en la ejecución del programa</p>
-  </div>
-
-  <div>
-  <h4>En Clojure (funcional):</h4>
-  <br>
-  <img src="assets/Screenshot_2410.png"/>
-  <br>
-  <img src="assets/Screenshot_2411.png"/>
-  <p><b>No usa</b> variables mutables: La variable x es inicializada, pero nunca modificada</p>
-  </div>
-</div>
-
-Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funcionales no varían.
-
----
-
-# Suministro de eventos
-
-Caso: Imprimir los cuadrados de los primeros 25 números enteros
-
-<div class="grid grid-cols-2 gap-4">
-  <div>
-  <h4>En Java (orientado a objetos):</h4>
-  <br>
-  <img src="assets/Screenshot_2409.png"/>
-  <p>Usa una variable <b>mutable</b>: Una variable que cambia su estado en la ejecución del programa</p>
-  </div>
-
-  <div>
-  <h4>En Clojure (funcional):</h4>
-  <br>
-  <img src="assets/Screenshot_2410.png"/>
-  <br>
-  <img src="assets/Screenshot_2411.png"/>
-  <p><b>No usa</b> variables mutables: La variable x es inicializada, pero nunca modificada</p>
-  </div>
-</div>
-
-Esto nos lleva a una <b>afirmación</b>: Las variables en los lenguajes funcionales no varían.
-
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
+<ul>
+<v-click>
+  <li>Cada uno restringe algún aspecto de la forma en que escribimos el código. Ninguno de ellos ha aumentado nuestro poder o nuestras capacidades.</li>
+  <li>Las reglas del software son las mismas hoy que en 1946, cuando Alan Turing escribió el primer código que se ejecutó en un ordenador electrónico. Las herramientas han cambiado y el hardware también, pero la esencia del software sigue siendo la misma.</li>
+</v-click>
+</ul>
 <br>
 <br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-### Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
+<p></p>
 <br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+<p></p>
 
 
 ---
@@ -543,6 +167,210 @@ layout: center
 class: text-center
 ---
 
-# Learn More
+# Parte 3: Principios de diseño
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+<style>
+h1 {
+  -webkit-text-fill-color: #FFFFFF;
+  -moz-text-fill-color: #FFFFFF;
+}
+</style>
+
+---
+
+# Principios de diseño
+
+SOLID: Cómo organizar funciones y estructuras de datos en clases, y cómo esas clases deben estar conectadas.
+
+El objetivo de estos principios es crear estructuras de software que sean:
+- Tolerantes al cambio
+- Fáciles de entender
+- Sean la base de componentes que puedan utilizarse en muchos sistemas de software.
+
+Estos son:
+- El principio de responsabilidad única (SRP)
+- El principio de apertura y cierre (OCP)
+- El principio de sustitución de Liskov (LSP)
+- El principio de segregación de interfaces (ISP)
+- El Principio de inversión de dependencias (DIP)
+
+---
+layout: center
+class: text-center
+---
+
+# Capítulo 7: Principio de responsabilidad única (SRP)
+
+<style>
+h1 {
+  -webkit-text-fill-color: #FFFFFF;
+  -moz-text-fill-color: #FFFFFF;
+}
+</style>
+
+---
+
+# Principio de responsabilidad única
+
+Es el principio menos entendido de los 5.
+
+Históricamente fue descrito:
+> <b>Un módulo debe tener una, y sólo una, razón para cambiar.</b>
+
+Interpretando que, por razón se refiere a alguna parte interesada, se puede reformular a:
+> <b>Un módulo debe ser responsable ante un, y sólo un, usuario o parte interesada.</b>
+
+Agrupamos a los usuarios o stakeholders en una entidad llamada actor. Finalmente:
+
+> <b>Un módulo debe ser responsable ante un, y sólo un, actor.</b>
+
+<br>
+<br>
+<br>
+Existen síntomas que se generan cuando este principio no se respeta:
+---
+
+# Síntoma 1: Duplicación accidental
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+Caso: Clase empleado de un sistema de nóminas, tiene 3 métodos o funciones:
+- calculatePay(): Definido por el departamento de contabilidad, que se reporta al CFO.
+- reportHours(): Definido y usado por el departamento de RRHH, que se reporta al COO.
+- save(): Definido por el administrador de base de datos (DBA), que reporta al CTO.
+
+Esto puede generar que las acciones del equipo del CFO pueden afectar algunas de las que el equipo del COO depende.
+
+</div>
+<div>
+  <br><br><br>
+  <img src="assets/Screenshot_2412.png"/>
+
+</div>
+</div>
+
+---
+
+# Síntoma 1: Duplicación accidental
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+1. calculatePay() y reportHours() dependen de una función regularHours() para calcular las horas regulares, esto para evitar duplicar código.
+2. El equipo del CFO decide cambiar regularHours(), pero el equipo del COO no está al tanto de esto.
+3. Un desarrollador hace el cambio sin percatarse de la dependencia adicional de reportHours().
+4. Se prueba y se despliega. RRHH sigue ejecutando sus operaciones pero con números erróneos.
+5. Finalmente, los errores han costado miles o hasta millones de dólares al presupuesto de RRHH.
+
+</div>
+<div>
+  <br><br><br><br><br><br><br>
+  <img src="assets/Screenshot_2413.png"/>
+</div>
+</div>
+
+---
+
+# Síntoma 2: Uniones o fusiones (merge)
+
+1. Supongamos que el equipo de DBAs del CTO decide que debe haber un cambio de esquema en la tabla Empleados de la base de datos.
+2. Supongamos también que el equipo de equipo del COO decide que necesita un cambio en el formato del informe de horas.
+3. Dos desarrolladores diferentes, de equipos diferentes, cambian la clase Empleado.
+4. Desgraciadamente sus cambios chocan. El resultado es una fusión o merge.
+5. Esta fusión pone en riesgo tanto al CTO como al COO, es posible que al COO también.
+
+<b>La forma de evitar este problema es separar el código que soporta diferentes actores.</b>
+
+---
+
+# Solucion 1
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+Separa los datos de las funciones.
+
+Las tres clases comparten el acceso a EmployeeData, que es una simple estructura de datos sin métodos.
+
+Cada clase contiene sólo el código fuente necesario para su función particular. Las tres clases no pueden conocerse entre sí.
+
+Así se evita cualquier duplicación accidental.
+
+El inconveniente es que los desarrolladores tienen ahora tres clases que tienen que seguir.
+
+</div>
+<div>
+  <br><br><br><br><br>
+  <img src="assets/Screenshot_2414.png"/>
+</div>
+</div>
+
+---
+
+# Solucion 1 v2
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+Una solución común es utilizar el patrón de diseño <b>Facade</b>.
+
+La clase EmployeeFacade contiene muy poco código. Es responsable de instanciar y delegar en las clases con las funciones.
+
+De igual manera, algunos desarrolladores prefieren mantener las reglas de negocio más importantes más cerca de los datos.
+
+</div>
+<div>
+  <br><br><br><br><br><br><br>
+  <img src="assets/Screenshot_2415.png"/>
+</div>
+</div>
+
+---
+
+# Solucion 2
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+Esto puede hacerse manteniendo el método más importante en la clase original Empleado y luego usar esa clase como un <b>Facade</b> para las funciones menores.
+
+¿Se podría contradecir a estas soluciones considerando que cada clase debe contart con una sola función?. <b>Difícilmente.</b>
+
+El número de funciones necesarias para calcular la paga, generar un informe, o guardar los datos es probable que sea grande en cada caso. Cada una de esas clases (consideradas un <b>ámbito</b>) tendría muchos métodos privados en ellas.
+
+Fuera de ese fuera de ese ámbito, nadie sabe que los miembros privados de la familia existen.
+
+</div>
+<div>
+  <br><br><br><br><br><br><br>
+  <img src="assets/Screenshot_2416.png"/>
+</div>
+</div>
+
+---
+
+# Conclusión
+
+- El Principio de Responsabilidad Única se refiere a las funciones y las clases, pero reaparece de forma diferente en otros dos niveles.
+- A nivel de componentes, se convierte en el <i>Principio de Cierre Común</i>.
+- En el nivel arquitectónico, se convierte en el <i>Eje de Cambio responsable de la creación de Límites Arquitectónicos</i>, conceptos que se verán en los siguientes capítulos.
+
+---
+
+# Referencias
+
+- [Libro de Clean Architecture](https://ia803101.us.archive.org/9/items/CleanArchitecture/Clean%20Architecture%20A%20Craftsman%27s%20Guide%20to%20Software%20Structure%20and%20Design.pdf)
+- [Resaltador de código](https://pinetools.com/syntax-highlighter)
+- [Condición de secuencia](https://en.wikipedia.org/wiki/Race_condition)
+- [Condición de bloqueo](https://en.wikipedia.org/wiki/Deadlock)
+- [Actualizaciones concurrentes](https://www.programmerinterview.com/database-sql/concurrent-update-problem/)
+
+---
+layout: center
+class: text-center
+---
+
+# Muchas Gracias
+
+[Correo](mailto:r.nolasco.ch@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ronaldo-nolasco-chavez/) · [Github](https://github.com/RonaldoNolasco)
