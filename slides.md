@@ -371,6 +371,7 @@ Fuera de ese fuera de ese ámbito, nadie sabe que los miembros privados de la fa
 
 # Referencias
 
+- [Herramienta para realizar slides con código](https://sli.dev/)
 - [Libro de Clean Architecture](https://ia803101.us.archive.org/9/items/CleanArchitecture/Clean%20Architecture%20A%20Craftsman%27s%20Guide%20to%20Software%20Structure%20and%20Design.pdf)
 - [Resaltador de código](https://pinetools.com/syntax-highlighter)
 - [Condición de secuencia](https://en.wikipedia.org/wiki/Race_condition)
