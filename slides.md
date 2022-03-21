@@ -180,12 +180,13 @@ h1 {
 
 # Principios de diseño
 
-SOLID: Cómo organizar funciones y estructuras de datos en clases, y cómo esas clases deben estar conectadas.
 
-El objetivo de estos principios es crear estructuras de software que sean:
-- Tolerantes al cambio
-- Fáciles de entender
-- Sean la base de componentes que puedan utilizarse en muchos sistemas de software.
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+SOLID: Cómo organizar funciones y datos en clases, y cómo esas clases deben estar conectadas.
+
+El objetivo de estos principios es crear estructuras de software que sean: Tolerantes al cambio, fáciles de entender y sean la base de componentes que puedan utilizarse en muchos sistemas de software.
 
 Estos son:
 - El principio de responsabilidad única (SRP)
@@ -193,6 +194,16 @@ Estos son:
 - El principio de sustitución de Liskov (LSP)
 - El principio de segregación de interfaces (ISP)
 - El Principio de inversión de dependencias (DIP)
+
+</div>
+<div>
+
+<br><br>
+<img src="assets/1_aouy-7W59qqur-y4-vk9Gw.png"/>
+
+</div>
+</div>
+
 
 ---
 layout: center
