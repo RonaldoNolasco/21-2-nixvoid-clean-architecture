@@ -27,26 +27,12 @@ Programación Funcional
 
 Principio de Responsabilidad Única
 
-<style>
-h1 {
-  -webkit-text-fill-color: #FFFFFF;
-  -moz-text-fill-color: #FFFFFF;
-}
-</style>
-
 ---
 layout: center
 class: text-center
 ---
 
 # Capítulo 6: Programación Funcional
-
-<style>
-h1 {
-  -webkit-text-fill-color: #FFFFFF;
-  -moz-text-fill-color: #FFFFFF;
-}
-</style>
 
 ---
 
@@ -169,13 +155,6 @@ class: text-center
 
 # Parte 3: Principios de diseño
 
-<style>
-h1 {
-  -webkit-text-fill-color: #FFFFFF;
-  -moz-text-fill-color: #FFFFFF;
-}
-</style>
-
 ---
 
 # Principios de diseño
@@ -211,13 +190,6 @@ class: text-center
 ---
 
 # Capítulo 7: Principio de responsabilidad única (SRP)
-
-<style>
-h1 {
-  -webkit-text-fill-color: #FFFFFF;
-  -moz-text-fill-color: #FFFFFF;
-}
-</style>
 
 ---
 
