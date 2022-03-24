@@ -21,11 +21,13 @@ drawings:
   persist: false
 ---
 
-# Clean Architecture - C6 & C7
+# Clean Architecture
 
-Programación Funcional
-
-Principio de Responsabilidad Única
+<h3>C6. Programación Funcional</h3>
+<h3>C7. Principio de Responsabilidad Única</h3>
+<br>
+<br>
+Expositor: Ronaldo Farid Nolasco Chavez
 
 ---
 layout: center
